@@ -1,5 +1,5 @@
 # EmployeeHub
-Distributed Systems Assignment - Basic MySQL CRUD GUI Java app using Swing.  
+Distributed Systems Assignment - Basic MySQL CRUD GUI Java app using NetBeans/Swing.  
 
 ## App Overview
 CRUD Functionality on a very simple GUI design. The different functionality features all revolve around the form & database users are visible in a table, which is in sync. Changes will update the table rows i.e. the employee details, based on their 'EmployeeID'.  
