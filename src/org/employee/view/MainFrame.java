@@ -287,7 +287,18 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_employeeTableMouseClicked
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
+        if(employeeID!=0){
+            try {
+                Statement smt = conn.createStatement();
+                smt.execute("DELETE from table_employees WHERE id="+employeeID);
+                JOptionPane.showMessageDialog(this, "Record Deleted");
+                setEmployeeTableData();
+                clearData();
+                employeeID=0;
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Unable to Delete Record");
+            }
+        }
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     /**
