@@ -2,7 +2,7 @@
 Distributed Systems Assignment - Basic MySQL CRUD GUI Java app using Swing.  
 
 ## App Overview
-CRUD Functionality on a very simple design structure. The different functionality features all revolve around the form & database users are visible in a table, which is in sync. Changes will update the table rows i.e. employee details based on their IDs.  
+CRUD Functionality on a very simple GUI design. The different functionality features all revolve around the form & database users are visible in a table, which is in sync. Changes will update the table rows i.e. employee details based on their IDs.  
 
 ### CREATE
 [Add] - button for registering a new employee to the DB.
