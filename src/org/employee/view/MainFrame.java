@@ -124,6 +124,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         deleteBtn.setBackground(new java.awt.Color(255, 255, 255));
         deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
         btnPanel.add(deleteBtn);
 
         clearBtn.setBackground(new java.awt.Color(255, 255, 255));
@@ -241,7 +246,7 @@ public class MainFrame extends javax.swing.JFrame {
                         + "lastName='"+lastName+"', salary='"+salary+"', gender='"+gender+"' WHERE id="+employeeID);
                 JOptionPane.showMessageDialog(this, "Details Updated");
                 setEmployeeTableData();
-                resetData();
+                clearData();
                 employeeID=0;
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Unable to Update Record");
@@ -254,7 +259,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ssnInputActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
-        resetData();
+        clearData();
     }//GEN-LAST:event_clearBtnActionPerformed
 
     private void employeeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeTableMouseClicked
@@ -280,6 +285,10 @@ public class MainFrame extends javax.swing.JFrame {
 
                 
     }//GEN-LAST:event_employeeTableMouseClicked
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -343,7 +352,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 
-    private void resetData() {
+    private void clearData() {
         ssnInput.setText("");
         dobInput.setText("");
         firstNameInput.setText("");
