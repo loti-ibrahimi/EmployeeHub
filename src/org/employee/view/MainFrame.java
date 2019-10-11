@@ -204,6 +204,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_firstNameInputActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        // Data fields. 
         int ssn=Integer.parseInt(ssnInput.getText());
         String dob=dobInput.getText();
         String firstName=firstNameInput.getText();
@@ -212,6 +213,7 @@ public class MainFrame extends javax.swing.JFrame {
         String gender=genderInput.getText();
         
         try {
+            // SQL Statement to be sent to db connection.
             Statement smt = conn.createStatement();
             smt.execute("INSERT INTO table_employees(ssn, dob, firstName, lastName, salary, gender) "
                     + "VALUES('"+ssn+"', '"+dob+"', '"+firstName+"', '"+lastName+"', '"+salary+"', '"+gender+"')");
@@ -233,7 +235,9 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // Employee ID must exist & not be equal to zero when selecitng employee record.  
         if(employeeID!=0){
+            // Form Data fields. 
             int ssn=Integer.parseInt(ssnInput.getText());
             String dob=dobInput.getText();
             String firstName=firstNameInput.getText();
@@ -241,12 +245,15 @@ public class MainFrame extends javax.swing.JFrame {
             String salary=salaryInput.getText();
             String gender=genderInput.getText();
             try {
+                // SQL Update statement sent across db connection.
                 Statement stm = conn.createStatement();
                 stm.execute("UPDATE table_employees SET ssn='"+ssn+"', dob='"+dob+"', firstName='"+firstName+"', "
                         + "lastName='"+lastName+"', salary='"+salary+"', gender='"+gender+"' WHERE id="+employeeID);
                 JOptionPane.showMessageDialog(this, "Details Updated");
                 setEmployeeTableData();
+                // Method to reset fields to empty.
                 clearData();
+                // Resetting selected ID
                 employeeID=0;
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Unable to Update Record");
@@ -264,8 +271,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void employeeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeTableMouseClicked
         try {
+            // Fetch the first value index[0] of the selected row, i.e. 'id'
             employeeID=Integer.parseInt(employeeTable.getValueAt(employeeTable.getSelectedRow(), 0).toString());
-            // System.out.println(employeeId);
+            // SQL statement to fetch data from db for selected employee id.
             Statement smt = conn.createStatement(); 
             ResultSet rs = smt.executeQuery("SELECT * FROM table_employees WHERE id="+employeeID);
             if(rs.next()){
@@ -287,6 +295,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_employeeTableMouseClicked
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // Valid id must exist i.e. an employee record has been selected.
         if(employeeID!=0){
             try {
                 Statement smt = conn.createStatement();
@@ -363,6 +372,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 
+    // Method for clearing form fields - setting empty values.
     private void clearData() {
         ssnInput.setText("");
         dobInput.setText("");
@@ -372,6 +382,7 @@ public class MainFrame extends javax.swing.JFrame {
         genderInput.setText("");
     }
     
+    // Method for updating GUI table rows/columns.
     private void setEmployeeTableData(){
         try {
             int rows=0;
@@ -383,9 +394,10 @@ public class MainFrame extends javax.swing.JFrame {
                 rows=rs.getRow();
                 rs.beforeFirst();
             }
-            // Show number of rows in table.
-            // System.out.println(rows);
+            // Signify array of many strings, 7 in this case. 
             String[][] data=new String[rows][7];
+            // Loop through rows indexes in the MySQL database table - table_employess
+            // Matching up respective columns.
             while(rs.next()) {
                 // Defining Columns
                 data[rowIndex][0]=rs.getInt(1)+"";
@@ -397,7 +409,7 @@ public class MainFrame extends javax.swing.JFrame {
                 data[rowIndex][6]=rs.getString(7);
                 rowIndex++;
             }
-            // System.out.println(rowIndex);
+            // Defining table columns headers. 
             String[] cols={"ID","SSN","DOB","First Name","Last Name","Salary","Gender"};
             DefaultTableModel model = new DefaultTableModel(data, cols);
             employeeTable.setModel(model);
