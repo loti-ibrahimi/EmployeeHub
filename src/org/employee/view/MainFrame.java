@@ -218,6 +218,10 @@ public class MainFrame extends javax.swing.JFrame {
             lastNameInput.setText("");
             salaryInput.setText("");
             genderInput.setText("");
+            
+            // Update the table if a new employee is added.
+            setEmployeeTableData();
+            
         } catch(Exception ex){
            JOptionPane.showMessageDialog(this, ex);
         }  
