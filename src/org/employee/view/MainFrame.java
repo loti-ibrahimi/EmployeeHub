@@ -374,7 +374,7 @@ public class MainFrame extends javax.swing.JFrame {
                 rowIndex++;
             }
             // System.out.println(rowIndex);
-            String[] cols={"ID","SSN","First Name","Last Name","Salary","Gender"};
+            String[] cols={"ID","SSN","DOB","First Name","Last Name","Salary","Gender"};
             DefaultTableModel model = new DefaultTableModel(data, cols);
             employeeTable.setModel(model);
                        
