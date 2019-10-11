@@ -14,6 +14,7 @@ import org.employee.db.DBConnection;
  */
 public class MainFrame extends javax.swing.JFrame {
     private Connection conn;
+    private int employeeID;
     public MainFrame() {
         initComponents();
         DBConnection dbc = DBConnection.getDBConnection();
@@ -155,6 +156,11 @@ public class MainFrame extends javax.swing.JFrame {
             }
         ));
         employeeTable.setGridColor(new java.awt.Color(153, 153, 153));
+        employeeTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                employeeTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(employeeTable);
 
         javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);
@@ -233,6 +239,30 @@ public class MainFrame extends javax.swing.JFrame {
     private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
         resetData();
     }//GEN-LAST:event_resetBtnActionPerformed
+
+    private void employeeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeTableMouseClicked
+        try {
+            employeeID=Integer.parseInt(employeeTable.getValueAt(employeeTable.getSelectedRow(), 0).toString());
+            // System.out.println(employeeId);
+            Statement smt = conn.createStatement(); 
+            ResultSet rs = smt.executeQuery("SELECT * FROM table_employees WHERE id="+employeeID);
+            if(rs.next()){
+                ssnInput.setText(rs.getInt(2)+"");
+                dobInput.setText(rs.getString(3));
+                firstNameInput.setText(rs.getString(4));
+                lastNameInput.setText(rs.getString(5));
+                salaryInput.setText(rs.getString(6));
+                genderInput.setText(rs.getString(7));
+            }
+            rs.close();
+            smt.close();
+            
+        } catch(Exception ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }
+
+                
+    }//GEN-LAST:event_employeeTableMouseClicked
 
     /**
      * @param args the command line arguments
