@@ -43,7 +43,7 @@ public class MainFrame extends javax.swing.JFrame {
         addBtn = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
-        resetBtn = new javax.swing.JButton();
+        clearBtn = new javax.swing.JButton();
         tablePanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         employeeTable = new javax.swing.JTable();
@@ -126,14 +126,14 @@ public class MainFrame extends javax.swing.JFrame {
         deleteBtn.setText("Delete");
         btnPanel.add(deleteBtn);
 
-        resetBtn.setBackground(new java.awt.Color(255, 255, 255));
-        resetBtn.setText("Reset");
-        resetBtn.addActionListener(new java.awt.event.ActionListener() {
+        clearBtn.setBackground(new java.awt.Color(255, 255, 255));
+        clearBtn.setText("Clear");
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetBtnActionPerformed(evt);
+                clearBtnActionPerformed(evt);
             }
         });
-        btnPanel.add(resetBtn);
+        btnPanel.add(clearBtn);
 
         tablePanel.setBackground(new java.awt.Color(51, 51, 51));
         tablePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Employee View", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Chalkboard SE", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -249,9 +249,9 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ssnInputActionPerformed
 
-    private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         resetData();
-    }//GEN-LAST:event_resetBtnActionPerformed
+    }//GEN-LAST:event_clearBtnActionPerformed
 
     private void employeeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeTableMouseClicked
         try {
@@ -318,6 +318,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JPanel btnPanel;
+    private javax.swing.JButton clearBtn;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JTextField dobInput;
     private javax.swing.JLabel dobLabel;
@@ -330,7 +331,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField lastNameInput;
     private javax.swing.JLabel lastNameLabel;
-    private javax.swing.JButton resetBtn;
     private javax.swing.JTextField salaryInput;
     private javax.swing.JLabel salaryLabel;
     private javax.swing.JTextField ssnInput;
