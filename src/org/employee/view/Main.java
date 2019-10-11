@@ -34,23 +34,39 @@ public class Main extends javax.swing.JFrame {
         dobInput = new javax.swing.JTextField();
         firstNameLabel = new javax.swing.JLabel();
         firstNameInput = new javax.swing.JTextField();
-        surNameLabel = new javax.swing.JLabel();
-        surNameInput = new javax.swing.JTextField();
+        lastNameLabel = new javax.swing.JLabel();
+        lastNameInput = new javax.swing.JTextField();
         salaryLabel = new javax.swing.JLabel();
         salaryInput = new javax.swing.JTextField();
         genderLabel = new javax.swing.JLabel();
         genderInput = new javax.swing.JTextField();
+        btnPanel = new javax.swing.JPanel();
+        addBtn = new javax.swing.JButton();
+        updateBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
+        resetBtn = new javax.swing.JButton();
+        tablePanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        employeeTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Employee Hub");
+        setBackground(new java.awt.Color(0, 0, 0));
 
         inputPanel.setBackground(new java.awt.Color(51, 51, 51));
-        inputPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        inputPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Employee Information", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Chalkboard", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
         inputPanel.setLayout(new java.awt.GridLayout(6, 2, 10, 15));
 
         ssnLabel.setBackground(new java.awt.Color(255, 255, 255));
         ssnLabel.setForeground(new java.awt.Color(255, 255, 255));
         ssnLabel.setText("SSN");
         inputPanel.add(ssnLabel);
+
+        ssnInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ssnInputActionPerformed(evt);
+            }
+        });
         inputPanel.add(ssnInput);
 
         dobLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -69,10 +85,10 @@ public class Main extends javax.swing.JFrame {
         });
         inputPanel.add(firstNameInput);
 
-        surNameLabel.setForeground(new java.awt.Color(255, 255, 255));
-        surNameLabel.setText("Sur Name");
-        inputPanel.add(surNameLabel);
-        inputPanel.add(surNameInput);
+        lastNameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        lastNameLabel.setText("Last Name");
+        inputPanel.add(lastNameLabel);
+        inputPanel.add(lastNameInput);
 
         salaryLabel.setForeground(new java.awt.Color(255, 255, 255));
         salaryLabel.setText("Salary");
@@ -84,21 +100,85 @@ public class Main extends javax.swing.JFrame {
         inputPanel.add(genderLabel);
         inputPanel.add(genderInput);
 
+        btnPanel.setBackground(new java.awt.Color(51, 51, 51));
+        btnPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        btnPanel.setLayout(new java.awt.GridLayout(1, 4, 5, 0));
+
+        addBtn.setBackground(new java.awt.Color(0, 0, 0));
+        addBtn.setText("Add");
+        addBtn.setToolTipText("");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+        btnPanel.add(addBtn);
+
+        updateBtn.setBackground(new java.awt.Color(255, 255, 255));
+        updateBtn.setText("Update");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
+        btnPanel.add(updateBtn);
+
+        deleteBtn.setBackground(new java.awt.Color(255, 255, 255));
+        deleteBtn.setText("Delete");
+        btnPanel.add(deleteBtn);
+
+        resetBtn.setBackground(new java.awt.Color(255, 255, 255));
+        resetBtn.setText("Reset");
+        btnPanel.add(resetBtn);
+
+        tablePanel.setBackground(new java.awt.Color(51, 51, 51));
+        tablePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Employee View", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Chalkboard SE", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        tablePanel.setForeground(new java.awt.Color(255, 255, 255));
+
+        employeeTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        employeeTable.setGridColor(new java.awt.Color(153, 153, 153));
+        jScrollPane2.setViewportView(employeeTable);
+
+        javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);
+        tablePanel.setLayout(tablePanelLayout);
+        tablePanelLayout.setHorizontalGroup(
+            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+        );
+        tablePanelLayout.setVerticalGroup(
+            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tablePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(inputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(inputPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(tablePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -107,6 +187,18 @@ public class Main extends javax.swing.JFrame {
     private void firstNameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_firstNameInputActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void ssnInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ssnInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ssnInputActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,18 +237,26 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBtn;
+    private javax.swing.JPanel btnPanel;
+    private javax.swing.JButton deleteBtn;
     private javax.swing.JTextField dobInput;
     private javax.swing.JLabel dobLabel;
+    private javax.swing.JTable employeeTable;
     private javax.swing.JTextField firstNameInput;
     private javax.swing.JLabel firstNameLabel;
     private javax.swing.JTextField genderInput;
     private javax.swing.JLabel genderLabel;
     private javax.swing.JPanel inputPanel;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField lastNameInput;
+    private javax.swing.JLabel lastNameLabel;
+    private javax.swing.JButton resetBtn;
     private javax.swing.JTextField salaryInput;
     private javax.swing.JLabel salaryLabel;
     private javax.swing.JTextField ssnInput;
     private javax.swing.JLabel ssnLabel;
-    private javax.swing.JTextField surNameInput;
-    private javax.swing.JLabel surNameLabel;
+    private javax.swing.JPanel tablePanel;
+    private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }
