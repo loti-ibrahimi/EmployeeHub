@@ -13,7 +13,7 @@ CRUD Functionality on a very simple GUI design. The different functionality feat
 ### Update
 [Update] - button, usable after an entry in the table is selected; in-turn populating the form above with corresponding data, which you can edit; finally confirming changes and pressing the [Update] button.
 
-### * Clear *
+### Clear (Additional Button) 
 [Clear] - button, allows for clearing form data. 
 
 ### Delete
