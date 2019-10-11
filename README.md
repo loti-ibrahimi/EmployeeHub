@@ -7,7 +7,7 @@ CRUD Functionality on a very simple GUI design. The different functionality feat
 ### Create
 [Add] - button for registering a new employee to the DB.
 
-### READ
+### Read
 [Table View] - used to fetch & display data from the MySQL Database.
 
 ### Update
