@@ -1,8 +1,10 @@
 package org.employee.view;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import org.employee.db.DBConnection;
 /**
  *
@@ -16,6 +18,7 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         DBConnection dbc = DBConnection.getDBConnection();
         conn = dbc.getConnection();
+        setEmployeeTableData();
     }
 
     /**
@@ -129,6 +132,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         resetBtn.setBackground(new java.awt.Color(255, 255, 255));
         resetBtn.setText("Reset");
+        resetBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetBtnActionPerformed(evt);
+            }
+        });
         btnPanel.add(resetBtn);
 
         tablePanel.setBackground(new java.awt.Color(51, 51, 51));
@@ -202,6 +210,7 @@ public class MainFrame extends javax.swing.JFrame {
             smt.execute("INSERT INTO table_employees(ssn, dob, firstName, lastName, salary, gender) "
                     + "VALUES('"+ssn+"', '"+dob+"', '"+firstName+"', '"+lastName+"', '"+salary+"', '"+gender+"')");
             JOptionPane.showMessageDialog(this, "Record Submitted");
+            smt.close();
             ssnInput.setText("");
             dobInput.setText("");
             firstNameInput.setText("");
@@ -210,9 +219,7 @@ public class MainFrame extends javax.swing.JFrame {
             genderInput.setText("");
         } catch(Exception ex){
            JOptionPane.showMessageDialog(this, ex);
-        }
-        
-        
+        }  
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
@@ -222,6 +229,10 @@ public class MainFrame extends javax.swing.JFrame {
     private void ssnInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ssnInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ssnInputActionPerformed
+
+    private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
+        resetData();
+    }//GEN-LAST:event_resetBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,4 +295,53 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel tablePanel;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
+
+    private void resetData() {
+        ssnInput.setText("");
+        dobInput.setText("");
+        firstNameInput.setText("");
+        lastNameInput.setText("");
+        salaryInput.setText("");
+        genderInput.setText("");
+    }
+    
+    private void setEmployeeTableData(){
+        try {
+            int rows=0;
+            int rowIndex=0;
+            Statement smt = conn.createStatement();
+            ResultSet rs = smt.executeQuery("SELECT * FROM table_employees ORDER by id desc");
+            if(rs.next()) {
+                rs.last();
+                rows=rs.getRow();
+                rs.beforeFirst();
+            }
+            // Show number of rows in table.
+            // System.out.println(rows);
+            String[][] data=new String[rows][7];
+            while(rs.next()) {
+                // Defining Columns
+                data[rowIndex][0]=rs.getInt(1)+"";
+                data[rowIndex][1]=rs.getInt(2)+"";
+                data[rowIndex][2]=rs.getString(3);
+                data[rowIndex][3]=rs.getString(4);
+                data[rowIndex][4]=rs.getString(5);
+                data[rowIndex][5]=rs.getString(6);
+                data[rowIndex][6]=rs.getString(7);
+                rowIndex++;
+            }
+            // System.out.println(rowIndex);
+            String[] cols={"ID","SSN","First Name","Last Name","Salary","Gender"};
+            DefaultTableModel model = new DefaultTableModel(data, cols);
+            employeeTable.setModel(model);
+                       
+            rs.close();
+            smt.close();
+            
+        } catch (Exception ex){
+            JOptionPane.showMessageDialog(this, "Can Not Retrieve Data");
+        }
+    }
 }
+
+
