@@ -27,62 +27,62 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        inputPanel = new javax.swing.JPanel();
         ssnLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        ssnInput = new javax.swing.JTextField();
         dobLabel = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        dobInput = new javax.swing.JTextField();
         firstNameLabel = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        firstNameInput = new javax.swing.JTextField();
         surNameLabel = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        surNameInput = new javax.swing.JTextField();
         salaryLabel = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        salaryInput = new javax.swing.JTextField();
         genderLabel = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        genderInput = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Information", 0, 0, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanel2.setLayout(new java.awt.GridLayout(6, 2, 10, 15));
+        inputPanel.setBackground(new java.awt.Color(51, 51, 51));
+        inputPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
+        inputPanel.setLayout(new java.awt.GridLayout(6, 2, 10, 15));
 
         ssnLabel.setBackground(new java.awt.Color(255, 255, 255));
         ssnLabel.setForeground(new java.awt.Color(255, 255, 255));
         ssnLabel.setText("SSN");
-        jPanel2.add(ssnLabel);
-        jPanel2.add(jTextField1);
+        inputPanel.add(ssnLabel);
+        inputPanel.add(ssnInput);
 
         dobLabel.setForeground(new java.awt.Color(255, 255, 255));
         dobLabel.setText("Date of Birth");
-        jPanel2.add(dobLabel);
-        jPanel2.add(jTextField2);
+        inputPanel.add(dobLabel);
+        inputPanel.add(dobInput);
 
         firstNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         firstNameLabel.setText("First Name");
-        jPanel2.add(firstNameLabel);
+        inputPanel.add(firstNameLabel);
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        firstNameInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                firstNameInputActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField3);
+        inputPanel.add(firstNameInput);
 
         surNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         surNameLabel.setText("Sur Name");
-        jPanel2.add(surNameLabel);
-        jPanel2.add(jTextField4);
+        inputPanel.add(surNameLabel);
+        inputPanel.add(surNameInput);
 
         salaryLabel.setForeground(new java.awt.Color(255, 255, 255));
         salaryLabel.setText("Salary");
-        jPanel2.add(salaryLabel);
-        jPanel2.add(jTextField5);
+        inputPanel.add(salaryLabel);
+        inputPanel.add(salaryInput);
 
         genderLabel.setForeground(new java.awt.Color(255, 255, 255));
         genderLabel.setText("Gender");
-        jPanel2.add(genderLabel);
-        jPanel2.add(jTextField6);
+        inputPanel.add(genderLabel);
+        inputPanel.add(genderInput);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,23 +90,23 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .addComponent(inputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(186, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void firstNameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_firstNameInputActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,18 +145,18 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField dobInput;
     private javax.swing.JLabel dobLabel;
+    private javax.swing.JTextField firstNameInput;
     private javax.swing.JLabel firstNameLabel;
+    private javax.swing.JTextField genderInput;
     private javax.swing.JLabel genderLabel;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JPanel inputPanel;
+    private javax.swing.JTextField salaryInput;
     private javax.swing.JLabel salaryLabel;
+    private javax.swing.JTextField ssnInput;
     private javax.swing.JLabel ssnLabel;
+    private javax.swing.JTextField surNameInput;
     private javax.swing.JLabel surNameLabel;
     // End of variables declaration//GEN-END:variables
 }
