@@ -1,5 +1,4 @@
 package org.employee.db;
-
 /**
  *
  * @author loti ibrahimi
@@ -38,7 +37,8 @@ public class DBConnection {
             connectionProps.put("password", this.password);            
             conn = DriverManager.getConnection("jdbc:mysql://"
                             + this.serverName + ":" + this.portNumber + "/" + this.dbName,
-                            connectionProps);            
+                            connectionProps);  
+            System.out.println("Connection Established");
         } catch (Exception ex) {
             System.out.println(ex);
         }

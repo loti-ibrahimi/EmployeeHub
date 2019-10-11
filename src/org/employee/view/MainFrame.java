@@ -1,6 +1,8 @@
 package org.employee.view;
 
 import java.sql.Connection;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import org.employee.db.DBConnection;
 /**
  *
@@ -188,7 +190,29 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_firstNameInputActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
+        int ssn=Integer.parseInt(ssnInput.getText());
+        String dob=dobInput.getText();
+        String firstName=firstNameInput.getText();
+        String lastName=lastNameInput.getText();
+        String salary=salaryInput.getText();
+        String gender=genderInput.getText();
+        
+        try {
+            Statement smt = conn.createStatement();
+            smt.execute("INSERT INTO table_employees(ssn, dob, firstName, lastName, salary, gender) "
+                    + "VALUES('"+ssn+"', '"+dob+"', '"+firstName+"', '"+lastName+"', '"+salary+"', '"+gender+"')");
+            JOptionPane.showMessageDialog(this, "Record Submitted");
+            ssnInput.setText("");
+            dobInput.setText("");
+            firstNameInput.setText("");
+            lastNameInput.setText("");
+            salaryInput.setText("");
+            genderInput.setText("");
+        } catch(Exception ex){
+           JOptionPane.showMessageDialog(this, ex);
+        }
+        
+        
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
